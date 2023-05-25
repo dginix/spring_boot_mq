@@ -1,0 +1,19 @@
+spring:
+  jpa:
+      open-in-view: true
+
+integration:
+  ibmmq:
+      host: ${IBM_MQ_HOST}
+      port: ${IBM_MQ_PORT}
+      manager: QM1
+      channel: DEV.APP.SVRCONN
+      input-queue: DEV.QUEUE.1
+  activemq:
+      host: ${ACTIVE_MQ_HOST}
+      port: ${ACTIVE_MQ_PORT}
+      broker-url: tcp://${integration.activemq.host}:${integration.activemq.port}
+      user: ${ACTIVE_MQ_ADMIN_USER}
+      password: ${ACTIVE_MQ_ADMIN_PASSWORD}
+      output-queue: DEV.QUEUE.1
+
