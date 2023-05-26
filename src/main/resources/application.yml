@@ -1,6 +1,15 @@
 spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRESQL_URL}/develop?currentSchema=mq
+    username: ${POSTGRESQL_USER}
+    password: ${POSTGRESQL_PASSWORD}
   jpa:
+      hibernate:
+        ddl-auto: none
       open-in-view: true
+  liquibase:
+    change-log: classpath:liquibase/main.yaml
 
 integration:
   ibmmq:
