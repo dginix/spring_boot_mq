@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import javax.jms.Message;
@@ -21,6 +22,7 @@ public class IbmMqService implements MqService {
 
     @Override
     @JmsListener(destination = "${integration.ibmmq.input-queue}", containerFactory = "jmsListenerContainerFactoryIbmMq")
+    @Transactional
     public Message receive(Message message) {
         try {
             String value = message.getBody(String.class);
